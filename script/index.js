@@ -2,6 +2,7 @@ const convertButton = document.querySelector("#convert-button");
 const inputAmount = document.querySelector("#amount-input");
 const resultDisplay = document.querySelector("#result-display");
 const currencySelect = document.querySelector("#change-currency");
+const currencySelectFrom = document.querySelector("#select-currency-from")
 
 function convertValues() {
     const inputValue = inputAmount.value;
@@ -24,11 +25,25 @@ function convertValues() {
     console.log("Resultado em Dólar:", result);
     }
 
+    if (currencySelectFrom.value === "JPY" && currencySelectFrom.value === "BRL") {
+
+    const result = inputValue / 27;
+
+    resultDisplay.innerHTML = "R$ " + result.toFixed(2);
+  }
+
+    if (currencySelectFrom.value === "JPY" && currencySelectFrom.value === "BRL") {
+
+    const result = inputValue / 27;
+
+    resultDisplay.innerHTML = "R$ " + result.toFixed(2);
+  }
 
 }
 function changeCurrency() {
   const currencyName = document.querySelector("#currency-Name");
   const currencyImage = document.querySelector(".currency-Image");
+  const currencyNameFrom = document.querySelector()
 
   if (currencySelect.value === "USD") {
     currencyName.innerHTML = "Dolar Americano";
