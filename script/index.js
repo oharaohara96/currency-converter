@@ -7,6 +7,20 @@ const currencySelectFrom = document.querySelector("#select-currency-from")
 function convertValues() {
     const inputValue = inputAmount.value;
 
+      if (inputValue === "") {
+
+      alert("Por favor, digite um valor!");
+
+      return ;
+     }
+
+     if (currencySelect.value ===  currencySelectFrom.value) {
+
+     resultDisplay.innerHTML = inputValue;
+
+     return;
+    }
+
     if (currencySelect.value === "JPY") {
 
     const result = inputValue * 27;
@@ -25,43 +39,76 @@ function convertValues() {
     console.log("Resultado em Dólar:", result);
     }
 
-    if (currencySelectFrom.value === "JPY" && currencySelectFrom.value === "BRL") {
+  if (currencySelect.value === "BRL" && currencySelectFrom.value === "JPY") {
+
+    const result = inputValue * 27;
+
+    resultDisplay.innerHTML = "¥" + result.toFixed(2);
+  }
+
+  if (currencySelect.value === "JPY" && currencySelectFrom.value === "BRL") {
 
     const result = inputValue / 27;
 
     resultDisplay.innerHTML = "R$ " + result.toFixed(2);
   }
 
-    if (currencySelectFrom.value === "JPY" && currencySelectFrom.value === "BRL") {
+  if (currencySelect.value === "BRL" && currencySelectFrom.value === "USD") {
 
-    const result = inputValue / 27;
+    const result = inputValue * 5.10;
 
-    resultDisplay.innerHTML = "R$ " + result.toFixed(2);
+    resultDisplay.innerHTML = "US$" + result.toFixed(2);
   }
 
-}
+  if (currencySelect.value === "" && currencySelectFrom.value === "USD") {
+
+    const result = inputValue * 5.10;
+
+    resultDisplay.innerHTML = "US$" + result.toFixed(2);
+  }
+
+ }
+
 function changeCurrency() {
-  const currencyName = document.querySelector("#currency-Name");
-  const currencyImage = document.querySelector(".currency-Image");
-  const currencyNameFrom = document.querySelector()
+  const currencyNameFrom = document.querySelector("#currency-name-from");
+  const currencyImageFrom = document.querySelector(".currency-img-from");
+  const currencyNameTo = document.querySelector("#currency-name-to");
+  const currencyImageTo = document.querySelector(".currency-image-to");
 
-  if (currencySelect.value === "USD") {
-    currencyName.innerHTML = "Dolar Americano";
-    currencyImage.src ="../Images/USA.png";
 
+  if (currencySelectFrom.value === "JPY") {
+     currencyNameFrom.innerHTML = "Iene Japones";
+     currencyImageFrom.src ="../Images/JPN.png";
   }
-  if (currencySelect.value === "JPY") {
-     currencyName.innerHTML = "Iene Japones";
-     currencyImage.src ="../Images/JPN.png";
 
+  if (currencySelectFrom.value === "BRL") {
+     currencyNameFrom.innerHTML = "Real Brasileiro";
+     currencyImageFrom.src ="../Images/BR.png";
+  }
+
+  if (currencySelectFrom.value === "USD") {
+     currencyNameFrom.innerHTML = "Dolar Americano";
+     currencyImageFrom.src ="../Images/USA.png";
+  }
+
+  if (currencySelect.value === "JPY") {
+     currencyNameTo.innerHTML = "ienes japones";
+     currencyImageTo.src ="../Images/JPN.png";
   }
 
   if (currencySelect.value === "BRL") {
-     currencyName.innerHTML = "Real Brasileiro";
-     currencyImage.src ="../Images/BR.png";
+     currencyNameTo.innerHTML = "Real Brasileiro";
+     currencyImageTo.src ="../Images/BR.png";
+  }
 
+  if (currencySelect.value === "USD") {
+     currencyNameTo.innerHTML = "Dolar Americano";
+     currencyImageTo.src ="../Images/USA.png";
   }
 }
 
 convertButton.addEventListener("click", convertValues);
 currencySelect.addEventListener("change", changeCurrency);
+currencySelectFrom.addEventListener("change", changeCurrency);
+currencySelect.addEventListener("change", convertValues);
+currencySelectFrom.addEventListener("change", convertValues);
