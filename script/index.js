@@ -21,48 +21,31 @@ function convertValues() {
      return;
     }
 
-    if (currencySelect.value === "JPY") {
-
-    const result = inputValue * 27;
-
-    resultDisplay.innerHTML = "¥ " + result;
-    console.log("Valor digitado:", inputValue);
-    console.log("Resultado em Iene:", result);
-    }
-
-    if (currencySelect.value === "USD") {
-
-    const result = inputValue / 5.10;
-
-    resultDisplay.innerHTML = "US$ " + result.toFixed(2);
-    console.log("Valor digitado:", inputValue);
-    console.log("Resultado em Dólar:", result);
-    }
 
   if (currencySelect.value === "BRL" && currencySelectFrom.value === "JPY") {
+
+    const result = inputValue / 27;
+
+    resultDisplay.innerHTML = "R$" + result.toFixed(2);
+  }
+
+  if (currencySelect.value === "JPY" && currencySelectFrom.value === "BRL") {
 
     const result = inputValue * 27;
 
     resultDisplay.innerHTML = "¥" + result.toFixed(2);
   }
 
-  if (currencySelect.value === "JPY" && currencySelectFrom.value === "BRL") {
-
-    const result = inputValue / 27;
-
-    resultDisplay.innerHTML = "R$ " + result.toFixed(2);
-  }
-
   if (currencySelect.value === "BRL" && currencySelectFrom.value === "USD") {
 
     const result = inputValue * 5.10;
 
-    resultDisplay.innerHTML = "US$" + result.toFixed(2);
+    resultDisplay.innerHTML = "R$" + result.toFixed(2);
   }
 
-  if (currencySelect.value === "" && currencySelectFrom.value === "USD") {
+  if (currencySelect.value === "USD" && currencySelectFrom.value === "BRL") {
 
-    const result = inputValue * 5.10;
+    const result = inputValue / 5.10;
 
     resultDisplay.innerHTML = "US$" + result.toFixed(2);
   }
